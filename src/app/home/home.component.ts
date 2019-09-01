@@ -1,6 +1,8 @@
 import { Component, OnInit,NgZone } from '@angular/core';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
+import { FreeapiService } from '../services/freeapi.service';
+import { Subscription } from 'rxjs';
 declare const gapi: any;
 @Component({
   selector: 'app-home',
@@ -10,7 +12,9 @@ declare const gapi: any;
 export class HomeComponent implements OnInit {
   name:any;
   mail:any;
-  constructor(private router:Router,private route:ActivatedRoute,private ngZone:NgZone) { }
+  sub:Subscription;
+  sdata:string;
+  constructor(private router:Router,private route:ActivatedRoute,private ngZone:NgZone,private  _api:FreeapiService) { }
   public signOut()
   {
     
@@ -24,6 +28,7 @@ export class HomeComponent implements OnInit {
    
   }
   ngOnInit() {
+    
     this.route.params.subscribe((params)=>{
        this.name=params['n'];
        this.mail=params['m'];

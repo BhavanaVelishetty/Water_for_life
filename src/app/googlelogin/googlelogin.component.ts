@@ -47,25 +47,27 @@ export class GoogleloginComponent implements AfterViewInit {
             "Content-type": "application/json; charset=UTF-8",
             'Accept': 'application/json'
           }
-        });
-       // .then(response => response.json())
-        //.then(json => console.log(json));
-        this.http.get("",google_id).subscribe((data)=>{
+        })
+        .then(response => response.json())
+        .then(json => console.log(json));
+        this.api.send('hi');
+        /*this.http.get("",google_id).subscribe((data)=>{
           this.uid=data;
-        });
+        });*/
         
         console.log('Token || ' + googleUser.getAuthResponse().id_token);
         console.log('ID: ' + profile.getId());
         console.log('Name: ' + profile.getName());
         console.log('Image URL: ' + profile.getImageUrl());
          console.log('Email: ' + profile.getEmail()); 
+        // this.api.send('hi');
          if(profile.getEmail()==this.mail){
          alert("signed in");
          
          }
          else
          alert("Registered successfully");
-         this.api.send("hi");
+         //this.api.send('hi');
          this.navigate(profile.getName(),profile.getEmail());
       }, function (error) {
         console.log(JSON.stringify(error, undefined, 2));
@@ -90,10 +92,12 @@ export class GoogleloginComponent implements AfterViewInit {
     });
     
   }*/
-  constructor(private element: ElementRef,private router:Router,private ngZone:NgZone,private http:HttpClient,private api:FreeapiService) { }
+  constructor(private element: ElementRef,private router:Router,private ngZone:NgZone,private http:HttpClient,private api:FreeapiService) {
+   }
 
   ngAfterViewInit() {
     this.googleInit();
+    
   }
   
 

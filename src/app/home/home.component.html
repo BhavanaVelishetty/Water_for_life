@@ -2,33 +2,19 @@
     <div class="bg">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(0,0,0,0.0);">
-              <div class="container-fluid">
-                <span class="navbar-brand mb-4 h1">Water for life</span>
-                      <ul class="navbar-nav ml-auto">
-                       
-                        <li class="nav-item dropdown"  id="items">
-                          <a class="nav-link dropdown-toggle " href=".\profile" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <button class="btn btn-primary" id="btn"type="submit"><i class="fa fa-user"></i></button>
-                              
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">profile name:{{name}}</a>
-                            <a class="dropdown-item" href="#">email:{{mail}}</a>
+         
+        <h2>Water For Life</h2><div class="dropdown show " id="dropping">
+          <a class="btn btn-primary  dropdown-toggle" href=".\profile" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user"></i>
+          </a>
         
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"(click)="signOut()">sign out</a>
-
-                          </div>
-                        </li>
-                        
-                      </ul>
-                      
-                    </div>
+          <div class="dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#"><b>profile name:{{name}}</b></a>
+            <a class="dropdown-item" href="#"><b>email:{{mail}}</b></a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#"(click)="signOut()"><b>sign out</b></a>          </div>
+        </div>
                 
-                  </nav>
-  
-  
    
 <app-questions></app-questions>
 </div>

@@ -9,13 +9,18 @@ import {Subject} from 'rxjs';
 export class FreeapiService {
 
   constructor(private http:HttpClient) { }
-  postdata(opost:Comment):Observable<Comment>{
-    return this.http.post<Comment>("./https://my-json-server.typicode.com/typicode/demo/posts/answers.json",opost);
+  postdata(anspost:Comment){
+    return this.http.post("",anspost);
   }
-  private senduid =new Subject<any>();
-  msg=this.senduid.asObservable();
-   send(uid:any){
+  public  senduid =new Subject<string>();
+  sendid=this.senduid.asObservable();
+ // public msg=this.senduid.asObservable();
+   send(uid:string){
+     console.log("send method"+uid);
      this.senduid.next(uid);
    }
+   getMessage(): Observable<any> {
+    return this.senduid.asObservable();
+} 
   
 }

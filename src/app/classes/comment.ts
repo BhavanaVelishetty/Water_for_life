@@ -1,7 +1,6 @@
 export class Comment{
-    qid:number;
-    ans1:number;
-    ans2:number;
-    ans3:number;
+    qid:string;
+    selected_opt:string;
+    ansobj:JSON
 
 }
