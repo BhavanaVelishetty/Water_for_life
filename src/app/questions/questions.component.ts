@@ -35,17 +35,19 @@ export class QuestionsComponent implements OnInit {
     };
     anspost:any=<Comment>this.ansobj;
   constructor(private http:HttpClient,private _api:FreeapiService) { }
-   selectedvalue(event:any){
+   /*selectedvalue(event:any){
      this.option=event.target.value;
-   }
-  nextques()
+   }*/
+  nextques(id:any)
   {
+    console.log(id);
+    this.option=(<HTMLInputElement>document.getElementById(id)).value;
     this.answers[this.i]=this.option;
     this.anspost[this.i].selected_opt=this.option;
     console.log(this.answers);
     console.log(this.anspost);
     this.option=null;
-    this.v=false;
+    //this.v=false;
     this.i+=1;
     if(this.i!=this.data.length)
     {
@@ -55,7 +57,7 @@ export class QuestionsComponent implements OnInit {
       this.op2=this.data[this.i].op2;
       this.op3=this.data[this.i].op3;
       this.op4=this.data[this.i].op4;
-       $("#next").attr("disabled", true);
+      // $("#next").attr("disabled", true);
     }
     else
     {
@@ -70,10 +72,13 @@ export class QuestionsComponent implements OnInit {
  // obj:Comment;
  
   ngOnInit() {
-    debugger;
-    this._api.getMessage().subscribe(data=>{
+    //debugger;
+    //this._api.msg.subscribe(data => this.uid=data);
+    this.uid=this._api.getuserid();
+    console.log(this.uid);
+    /*this._api.getMessage().subscribe(data=>{
       console.log(data)
-    })
+    })*/
     //console.log(this.uid);
     this.http.get("assets/questions.json").subscribe((ques)=>{
       //debugger;
@@ -106,7 +111,7 @@ export class QuestionsComponent implements OnInit {
       }
     
     );*/
-    $(document).ready(() => {
+    /*$(document).ready(() => {
       var q04 = $('input[name="op"]');
       validate();
       $("input[type='radio']").change(validate);
@@ -119,7 +124,7 @@ export class QuestionsComponent implements OnInit {
           }
           q04.removeAttr("checked",false);
       }
-});
+});*/
   
   
 }

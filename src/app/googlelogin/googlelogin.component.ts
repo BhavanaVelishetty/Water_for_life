@@ -49,8 +49,8 @@ export class GoogleloginComponent implements AfterViewInit {
           }
         })
         .then(response => response.json())
-        .then(json => console.log(json));
-        this.api.send('hi');
+        .then(json =>this.uid=json );//console.log(json));
+        this.api.senduserid('hi');
         /*this.http.get("",google_id).subscribe((data)=>{
           this.uid=data;
         });*/
@@ -68,21 +68,23 @@ export class GoogleloginComponent implements AfterViewInit {
          else
          alert("Registered successfully");
          //this.api.send('hi');
-         this.navigate(profile.getName(),profile.getEmail());
+         this.api.sendname(profile.getName());
+         this.api.sendmail(profile.getEmail());
+         this.navigate(/*profile.getName(),profile.getEmail()*/);
       }, function (error) {
         console.log(JSON.stringify(error, undefined, 2));
       });
   }
  
-  navigate(name,Email)
+  navigate(/*name,Email*/)
   {
   
-    this.ngZone.run(() =>this.router.navigate(['/home',{'n':name,'m':Email}])).then();
+    this.ngZone.run(() =>this.router.navigate(['/home'/*,{'n':name,'m':Email}*/])).then();
 
     
   }
   
-  /*public signOut()
+ /* public signOut()
   {
     
     console.log("entered signout");

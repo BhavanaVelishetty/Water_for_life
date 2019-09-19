@@ -19,9 +19,9 @@
      {{i+1}}.{{question}}
   </div>
   <div class="card-body" *ngIf="display">
-      <p class="card-text"><input type="radio" value="{{op1}}" name="op" (change)="selectedvalue($event)">{{op1}}</p>
-      <p class="card-text"> <input type="radio" value="{{op2}}" name="op" (change)="selectedvalue($event)">{{op2}}</p>
-      <p class="card-text"> <input type="radio" value="{{op3}}" name="op" (change)="selectedvalue($event)">{{op3}}</p>
+      <p class="card-text"><input type="button" value="{{op1}}" name="op1" (click)="nextques('op1')"></p>
+      <p class="card-text"> <input type="button" value="{{op2}}" name="op2" (click)="nextques('op2')"></p>
+      <p class="card-text"> <input type="button" value="{{op3}}" name="op3" (click)="nextques('op3')"></p>
      
     </div>
   <a></a>
@@ -30,9 +30,7 @@
         <button type="button" class="btn btn-danger">submit</button>
       </a>
   </div>
-  <div class="card-footer" *ngIf="display">
-  <button id="next" type="submit" class="btn" (click)="nextques()" disabled=!v>Next</button>
-  </div>
+  
 
 </div>
 <p>

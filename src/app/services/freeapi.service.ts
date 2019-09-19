@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable}from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {Comment} from '../../app/classes/comment';
-import {Subject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,15 +12,36 @@ export class FreeapiService {
   postdata(anspost:Comment){
     return this.http.post("",anspost);
   }
-  public  senduid =new Subject<string>();
-  sendid=this.senduid.asObservable();
- // public msg=this.senduid.asObservable();
-   send(uid:string){
+  public  senduid =new BehaviorSubject<string>("default data");
+  public msg=this.senduid.asObservable();
+  ruid:string;
+  rname:string;
+  rmail:string;
+   senduserid(uid){
      console.log("send method"+uid);
-     this.senduid.next(uid);
+     //this.senduid.next(uid);
+     this.ruid=uid;
    }
-   getMessage(): Observable<any> {
-    return this.senduid.asObservable();
-} 
-  
+   getuserid() {
+    //this.msg.subscribe(data =>this.ruid=data);
+     return this.ruid;
+  } 
+  sendname(name)
+  {
+    //this.senduid.next(name);
+    this.rname=name;
+  }
+  getname(){
+    //this.msg.subscribe(data =>this.rname=data);
+    return this.rname;
+  }
+  sendmail(mail){
+   // this.senduid.next(mail);
+    this.rmail=mail;
+  }
+  getmail()
+  {
+    //this.msg.subscribe(data =>this.rmail=data);
+    return this.rmail;
+  }
 }

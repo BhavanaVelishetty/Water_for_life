@@ -28,11 +28,14 @@ export class HomeComponent implements OnInit {
    
   }
   ngOnInit() {
-    
-    this.route.params.subscribe((params)=>{
-       this.name=params['n'];
-       this.mail=params['m'];
-    })
+    //this._api.msg.subscribe(data =>this.name=data);
+    //this._api.msg.subscribe(data =>this.mail=data);
+    //this.route.params.subscribe((params)=>{
+       //this.name=params['n'];
+       //this.mail=params['m'];
+   // })
+   this.name=this._api.getname();
+   this.mail=this._api.getmail();
   }
 
 }
